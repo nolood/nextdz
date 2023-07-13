@@ -1,0 +1,30 @@
+.list {
+  display: flex;
+  list-style: none;
+}
+
+.link {
+  text-decoration: none;
+  color: #787878;
+  letter-spacing: 3px;
+  font-size: 1.1rem;
+  transition: 0.2s;
+}
+
+.link:hover {
+  color: #434242;
+}
+
+.item {
+  margin-right: 1rem;
+}
+
+.nav {
+  margin-bottom: 1.8rem;
+}
+
+@media (max-width: 900px) {
+  .list {
+    display: none;
+  }
+}

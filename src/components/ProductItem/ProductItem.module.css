@@ -1,0 +1,17 @@
+.text {
+  margin: 1rem 0;
+}
+
+.link {
+  padding: 5px 20px;
+  background-color: transparent;
+  color: #343434;
+  border: 1px solid #343434;
+  text-decoration: none;
+  transition: 0.2s;
+}
+
+.link:hover {
+  background-color: #343434;
+  color: white;
+}
