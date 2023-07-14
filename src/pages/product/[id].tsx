@@ -1,7 +1,10 @@
 import Product from "@/components/screens/Product/Product";
+import { IItem } from "@/types/IItem";
+import { GetStaticProps, NextPage } from "next";
 import Head from "next/head";
+import { fetchItemById } from "../lib/fetchItemById";
 
-const ProductPage = () => {
+const ProductPage: NextPage<{ item: IItem }> = ({ item }) => {
   return (
     <>
       <Head>
@@ -11,10 +14,39 @@ const ProductPage = () => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main>
-        <Product />
+        <Product item={item} />
       </main>
     </>
   );
 };
 
 export default ProductPage;
+
+export async function getStaticPaths() {
+  return {
+    paths: [
+      {
+        params: { id: "1" },
+      },
+      {
+        params: { id: "2" },
+      },
+      {
+        params: { id: "3" },
+      },
+    ],
+    fallback: false,
+  };
+}
+
+export const getStaticProps: GetStaticProps<{
+  item: IItem;
+}> = async (context) => {
+  const { params } = context;
+  const item = await fetchItemById(String(params?.id));
+  return {
+    props: {
+      item,
+    },
+  };
+};
